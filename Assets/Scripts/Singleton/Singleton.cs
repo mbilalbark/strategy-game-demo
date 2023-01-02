@@ -4,13 +4,7 @@ namespace STGD.Core.Singleton
 {
     public abstract class Singleton<T> : MonoBehaviour where T : Component
     {
-
-        #region Fields
         private static T instance;
-
-        #endregion
-
-        #region Properties
         public static T Instance
         {
             get
@@ -28,10 +22,6 @@ namespace STGD.Core.Singleton
                 return instance;
             }
         }
-
-        #endregion
-
-        #region Methods
         protected virtual void Awake()
         {
             if (instance == null)
@@ -44,6 +34,5 @@ namespace STGD.Core.Singleton
                 Destroy(gameObject);
             }
         }
-        #endregion
     }
 }

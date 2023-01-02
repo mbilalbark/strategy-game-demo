@@ -60,7 +60,7 @@ namespace STGD.Core.Manager
                     if (isBuild)
                     {
                         building.Build();
-                        MapCreateManger.Instance.UpdateGrid(nodeCoordinate, heightWidth, Node.UnitType.Building);
+                        MapCreateManger.Instance.UpdateGrid(nodeCoordinate, heightWidth);
                         building = null;
                     }
                 }

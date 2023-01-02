@@ -15,7 +15,6 @@ namespace STGD.Core.Pathfinding
         public int GCost { get; set; }
         public int HCost { get; set; }
         public Node Parent { get; set; }
-        public UnitType Type { get; set; }
         
         public int fCost
         {
@@ -24,13 +23,12 @@ namespace STGD.Core.Pathfinding
                 return GCost + HCost;
             }
         }
-        public Node(bool _walkable, Vector2 _worldPos, int _gridX, int _gridY, UnitType _type)
+        public Node(bool _walkable, Vector2 _worldPos, int _gridX, int _gridY)
         {
             walkable = _walkable;
             WorldPosition = _worldPos;
             GridX = _gridX;
             GridY = _gridY;
-            Type = _type;
         }
 
         public Vector2Int GetIntCordinate()
@@ -46,13 +44,6 @@ namespace STGD.Core.Pathfinding
         public float GetDistance(Vector2 point1)
         {
             return Vector2.Distance(point1, WorldPosition);
-        }
-
-        public enum UnitType
-        {
-            None,
-            Solidier,
-            Building
         }
     }
 }

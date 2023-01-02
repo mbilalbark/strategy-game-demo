@@ -34,7 +34,7 @@ namespace STGD.Core.Pathfinding
             {
                 for (int y = 0; y < gridSizeY; y++)
                 {
-                    Nodes[x, y] = new Node(true, new Vector2(x, y), x, y, Node.UnitType.None);
+                    Nodes[x, y] = new Node(true, new Vector2(x, y), x, y);
                 }
             }
         }

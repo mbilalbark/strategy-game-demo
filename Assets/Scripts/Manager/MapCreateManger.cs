@@ -96,7 +96,7 @@ namespace STGD.Core.Manager
             return true;
         }
 
-        public void UpdateGrid(Vector2Int coordinate, int[] heightWidth, Node.UnitType type)
+        public void UpdateGrid(Vector2Int coordinate, int[] heightWidth)
         {
             for (int i = 0; i < heightWidth[1]; i++)
             {
