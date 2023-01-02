@@ -4,26 +4,12 @@ using System.Collections.Generic;
 
 namespace STGD.Core.Pathfinding
 {
-    public class Pathfinder : MonoBehaviour
+    public static class Pathfinder
     {
-
-        public Transform seeker, target;
-        private Grid grid;
-
-        private void Awake()
+        private static Grid grid;
+        public static void SetPath(Vector2 startPos, Vector2 targetPos, Grid _grid)
         {
-            //grid = GetComponent<Grid>();
-        }
-
-        //private void Update()
-        //{
-        //    FindPath(seeker.position, target.position);
-        //}
-
-
-        //TODO: Sent to node
-        private void FindPath(Vector3 startPos, Vector3 targetPos)
-        {
+            grid = _grid;
             Node startNode = grid.NodeFromWorldPoint(startPos);
             Node targetNode = grid.NodeFromWorldPoint(targetPos);
 
@@ -73,7 +59,7 @@ namespace STGD.Core.Pathfinding
             }
         }
 
-        private void RetracePath(Node startNode, Node endNode)
+        private static void RetracePath(Node startNode, Node endNode)
         {
             List<Node> path = new List<Node>();
             Node currentNode = endNode;
@@ -89,7 +75,7 @@ namespace STGD.Core.Pathfinding
 
         }
 
-        private int GetDistance(Node nodeA, Node nodeB)
+        private static int GetDistance(Node nodeA, Node nodeB)
         {
             int dstX = Mathf.Abs(nodeA.GridX - nodeB.GridX);
             int dstY = Mathf.Abs(nodeA.GridY - nodeB.GridY);

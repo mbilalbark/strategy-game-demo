@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProductionButtonModel : MonoBehaviour
+public class BuildButtonModel : MonoBehaviour
 {
     [SerializeField]
     private ProductionType type;

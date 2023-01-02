@@ -16,6 +16,7 @@ namespace STGD.Core.Manager
         public void Init()
         {
             ProductionUi.Instance.Init();
+            InformationUi.Instance.Init();
         }
     }
 }

@@ -7,22 +7,8 @@ namespace STGD.Core.Base
 {
     public class BuildingModel : UnitModel
     {
-        //[SerializeField]
-        //private List<Product> products;
-        //public List<Product> Products { get => products; set => products = value; }
         [SerializeField]
-        private SpriteRenderer renderer;
-
-        public SpriteRenderer Renderer
-        {
-            get
-            {
-                return renderer;
-            }
-            set
-            {
-                renderer = value;
-            }
-        }
+        private List<Product> products;
+        public List<Product> Products { get => products; set => products = value; }
     }
 }

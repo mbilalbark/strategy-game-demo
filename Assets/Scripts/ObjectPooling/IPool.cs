@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using STGD.Core.Base;
 using System;
 using System.Collections;
@@ -8,23 +9,30 @@ namespace STGD.Core.ObjectPooling
 {
     public interface IPool
     {
-
-    }
-    public interface IPool<T> where T: IInitialize<T>
-    {
-        public T AddObjectToPool();
-        public void RemoveObjectoFromPool(T obj);
+        void RemoveObjectoFromPool(object obj);
     }
 
-    public interface IPool<TParam, TValue> where TValue : IInitialize<TParam, TValue>
+    public interface IRemoveablePool<TValue> : IPool
     {
-        public TValue AddObjectToPool(TParam param);
-        public void RemoveObjectoFromPool(TValue value);
+        void RemoveObjectoFromPool(TValue obj);
+    }
+    public interface IPool<T> : IRemoveablePool<T> where T: IInitialize<T>
+    {
+        T AddObjectToPool();
     }
 
-    public interface IPool<TParam1, TParam2,  TValue> where TValue : IInitialize<TParam1, TParam2, TValue>
+    public interface IPool<TParam, TValue>: IRemoveablePool<TValue> where TValue : IInitialize<TParam, TValue>
     {
-        public TValue AddObjectToPool(TParam1 param1, TParam2 param2);
-        public void RemoveObjectoFromPool(TValue value);
+        TValue AddObjectToPool(TParam param);
+    }
+
+    public interface IPool<TParam1, TParam2,  TValue> : IRemoveablePool<TValue> where TValue : IInitialize<TParam1, TParam2, TValue>
+    {
+        TValue AddObjectToPool(TParam1 param1, TParam2 param2);
+    }
+
+    public interface IPool<TParam1, TParam2, TParam3, TValue> : IRemoveablePool<TValue> where TValue : IInitialize<TParam1, TParam2, TParam3, TValue>
+    {
+        TValue AddObjectToPool(TParam1 param1, TParam2 param2, TParam3 param3);
     }
 }

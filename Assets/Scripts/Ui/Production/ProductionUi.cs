@@ -11,7 +11,7 @@ namespace STGD.Core.Ui
         [SerializeField] private int productionCount;
         [SerializeField] private GameObject[] productions;
         [SerializeField] private Transform content;
-        [SerializeField] private Pool<GameObject, Transform, ProductionButton> productionPool;
+        [SerializeField] private Pool<GameObject, Transform, BuildButton> buildButtonPool;
 
         protected override void Awake()
         {
@@ -24,7 +24,7 @@ namespace STGD.Core.Ui
             {
                 for (int j = 0; j < productions.Length; j++)
                 {
-                    productionPool.AddObjectToPool(productions[j], content);
+                    buildButtonPool.AddObjectToPool(productions[j], content);
                 }
             }
         }

@@ -14,8 +14,8 @@ namespace STGD.Core.Manager
         {
             InputManager.Instance.Init();
             MapCreateManger.Instance.Init();
-            UiManager.Instance.Init();
             LevelManager.Instance.Init();
+            UiManager.Instance.Init();
         }
     }
 }

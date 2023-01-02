@@ -20,4 +20,22 @@ namespace STGD.Core.PubSub
             p.OnPublish -= e;
         }
     }
+
+    public static class Subscriber<TParam1, TParam2>
+    {
+        // This function subscribe to the events of the publisher
+        public static void Subscribe(Publisher<TParam1, TParam2> p, Action<Publisher<TParam1, TParam2>, TParam1, TParam2> e)
+        {
+            // register Action with publisher event
+            p.OnPublish += e;
+
+        }
+
+        // This function unsubscribe from the events of the publisher
+        public static void Unsubscribe(Publisher<TParam1, TParam2> p, Action<Publisher<TParam1, TParam2>, TParam1, TParam2> e)
+        {
+            // unregister Action from publisher
+            p.OnPublish -= e;
+        }
+    }
 }

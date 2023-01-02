@@ -27,4 +27,10 @@ namespace STGD.Core.ObjectPooling
         void Init(TParam1 param1, TParam2 param2, IPool pool);
         void End();
     }
+
+    public interface IInitialize<TParam1, TParam2, TParam3, TValue> : IInitialize
+    {
+        void Init(TParam1 param1, TParam2 param2, TParam3 param3, IPool pool);
+        void End();
+    }
 }

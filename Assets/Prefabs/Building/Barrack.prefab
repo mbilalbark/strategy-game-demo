@@ -98,10 +98,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 545df395450308444bdaf570a5f9ed51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 404c810cf1c9b6649b8123a74c72515c, type: 2}
   width: 4
   height: 4
-  health: 0
+  health: 100
+  sprite: {fileID: 21300000, guid: fccc2e44f694c1747a5873145c1f1e52, type: 3}
+  title: Barrack
   renderer: {fileID: 4568258760708422333}
+  products:
+  - {fileID: 1213818032503586218, guid: e3d16bf850ffe9b40be0eed0ee64147a, type: 3}
+  - {fileID: 560387615338649550, guid: a5e668ef879e8874cbf5ab4b8a77397c, type: 3}
+  - {fileID: 4560635754541685630, guid: e9ee9eabc62de7d47a174cb0fa22b89a, type: 3}
 --- !u!114 &4568258760708422307
 MonoBehaviour:
   m_ObjectHideFlags: 0

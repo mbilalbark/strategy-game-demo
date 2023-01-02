@@ -9,7 +9,11 @@ namespace STGD.Core.ObjectPooling
 
     public abstract class PoolBase<TValue> : MonoBehaviour, IPool
     {
-
+        public void RemoveObjectoFromPool(object obj)
+        {
+            RemoveObjectoFromPool((TValue)obj);
+        }
+        public abstract void RemoveObjectoFromPool(TValue obj);
     }
     public abstract class Pool<T> : PoolBase<T>, IPool<T> where T : IInitialize<T>
     {
@@ -33,7 +37,7 @@ namespace STGD.Core.ObjectPooling
             return Factory.Create();
         }
 
-        public void RemoveObjectoFromPool(T obj)
+        public override void RemoveObjectoFromPool(T obj)
         {
             pool.Push(obj);
             obj.End();
@@ -61,7 +65,7 @@ namespace STGD.Core.ObjectPooling
             return Factory.Create(param);
         }
 
-        public void RemoveObjectoFromPool(TValue obj)
+        public override void RemoveObjectoFromPool(TValue obj)
         {
             pool.Push(obj);
             obj.End();
@@ -89,7 +93,35 @@ namespace STGD.Core.ObjectPooling
             return Factory.Create(param1, param2);
         }
 
-        public void RemoveObjectoFromPool(TValue value)
+        public override void RemoveObjectoFromPool(TValue value)
+        {
+            pool.Push(value);
+            value.End();
+        }
+    }
+    public abstract class Pool<TParam1, TParam2, TParam3, TValue> : PoolBase<TValue>, IPool<TParam1, TParam2, TParam3, TValue> where TValue : IInitialize<TParam1, TParam2, TParam3, TValue>
+    {
+        public abstract IFactory<TParam1, TParam2, TParam3, TValue> Factory { get; set; }
+        private Stack<TValue> pool;
+
+        private void OnEnable()
+        {
+            pool = new Stack<TValue>();
+        }
+
+        public TValue AddObjectToPool(TParam1 param1, TParam2 param2, TParam3 param3)
+        {
+            TValue obj = pool.Count > 0 ? pool.Pop() : Create(param1, param2, param3);
+            obj.Init(param1, param2,param3, this);
+            return obj;
+        }
+
+        private TValue Create(TParam1 param1, TParam2 param2, TParam3 param3)
+        {
+            return Factory.Create(param1, param2, param3);
+        }
+
+        public override void RemoveObjectoFromPool(TValue value)
         {
             pool.Push(value);
             value.End();
